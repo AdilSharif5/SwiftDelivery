@@ -18,6 +18,7 @@ export class ProjectComponent implements OnInit {
   projectData: any;
   date = new FormControl(new Date());
   projects$: Observable<any> = new Observable();
+  newProjectBarColor: string = '';
 
   constructor(private service: ProjectsService) {}
 
@@ -79,6 +80,8 @@ export class ProjectComponent implements OnInit {
       randColor = randomNumberStr.padStart(6, '0');
       backgroundColorRGB = this.hexToRGB(`#${randColor.toUpperCase()}`);
     }
+
+    this.newProjectBarColor = `rgb(${backgroundColorRGB.r}, ${backgroundColorRGB.g}, ${backgroundColorRGB.b})`;
 
     return {
       rgba: `rgba(${backgroundColorRGB.r}, ${backgroundColorRGB.g}, ${backgroundColorRGB.b}, 0.2)`,

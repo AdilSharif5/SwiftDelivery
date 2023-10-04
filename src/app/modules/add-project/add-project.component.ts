@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProjectsService } from '../projects/services/projects.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -25,7 +26,7 @@ export class AddProjectComponent implements OnInit {
   tasks: any[] = [];
   tempId: number = -1;
 
-  constructor(private projectsService: ProjectsService) {}
+  constructor(private projectsService: ProjectsService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -37,6 +38,7 @@ export class AddProjectComponent implements OnInit {
     this.project.tasks = this.tasks;
     this.projectsService.addTask(this.taskObj);
     this.projectsService.addProject(this.project);
+    this.changeShowPopup();
   }
 
   addTaskHandler() {
