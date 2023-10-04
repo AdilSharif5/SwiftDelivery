@@ -1,0 +1,31 @@
+.sidebar {
+  padding: 3rem 0;
+
+  .icon-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: black;
+    margin-bottom: 1.5rem;
+
+    svg {
+      cursor: pointer;
+      width: 50%;
+      height: 50%;
+      fill: black;
+    }
+  }
+
+  .btn-active {
+    cursor: pointer;
+    background-color: #000;
+    .mat-icon {
+      color: white;
+    }
+    svg {
+      fill: white;
+    }
+  }
+}

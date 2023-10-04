@@ -1,0 +1,66 @@
+.add-user {
+  transition: 0.3s;
+  width: 100%;
+  height: 75vh;
+  background-color: white;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  .body-title {
+    flex: 1 0 auto;
+    padding: 1rem;
+    padding-right: 0;
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      font-weight: 500;
+      font-size: 2rem;
+    }
+
+    .close-icon:hover {
+      & > i > span {
+        color: rgba(255, 0, 0, 0.7) !important;
+      }
+    }
+  }
+
+  .task-form {
+    form {
+      padding: 1rem 2.5rem;
+
+      fieldset {
+        padding-bottom: 2rem 0;
+
+        label {
+          margin: 10px 0;
+          font-size: 1.3rem;
+        }
+
+        label,
+        input {
+          display: block;
+          width: 100%;
+        }
+
+        input {
+          margin: 5px 0;
+          font-size: 1.1rem;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid #b3b3b3;
+        }
+
+        input[type="checkbox"] {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  .btn {
+    color: white;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,77 @@
+<div class="add-user">
+  <div class="body-title">
+    <div class="title">Add User</div>
+    <div class="close-icon" (click)="changeShowPopup()">
+      <i><span style="font-size: 40px; font-weight: 600; color: rgba(255, 0, 0, 0.5); cursor: pointer; line-height: 0;"
+          class="material-icons close">close</span></i>
+    </div>
+  </div>
+  <div class="row mt-1" style="height: 42vh; overflow: hidden auto; flex: 10;">
+    <div class="mx-auto col-md-12 mt-5" style="width: fit-content;">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input matInput name="username" autocomplete="off">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Role</mat-label>
+            <input matInput name="role" autocomplete="off">
+            <!-- <mat-select>
+              <mat-option value="">
+                Select Lead
+              </mat-option>
+              <mat-option value="1">
+                Upanshu
+              </mat-option>
+              <mat-option value="0">
+                Not Done
+              </mat-option>
+              <mat-option value="-1">
+                Pending
+              </mat-option> -->
+            <!-- <mat-option *ngFor="let obj of statesList" [value]="obj.id">
+                {{obj.name}}
+              </mat-option> -->
+            <!-- </mat-select> -->
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <!-- <div class="col-md-12"> -->
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput name="comment" autocomplete="off">
+        </mat-form-field>
+        <!-- </div> -->
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Pasword</mat-label>
+            <input matInput style="width: 80% !important;" [type]="showPassword ? 'text' : 'password'" name="password"
+              autocomplete="off">
+            <span><mat-icon matSuffix (click)="showPassword = !showPassword">{{showPassword ?
+                'visibility' :
+                'visibility_off'}}</mat-icon></span>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput style="width: 80% !important;" [type]="showPassword ? 'text' : 'password'" type="password"
+              name="confirm-password" autocomplete="off">
+            <span><mat-icon matSuffix (click)="showPassword = !showPassword">{{showPassword ?
+                'visibility' :
+                'visibility_off'}}</mat-icon></span>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 pr-5 btns" style="width: 100%;flex: 1 0 auto; display: flex; justify-content: end;">
+    <button style="width: 120px; align-self: flex-end;" class="btn primary">Create</button>
+  </div>
+</div>

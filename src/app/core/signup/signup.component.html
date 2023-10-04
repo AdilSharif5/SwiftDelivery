@@ -1,0 +1,41 @@
+<div class="main-container">
+  <div class="container">
+    <form class="login-form" [formGroup]="signupForm" novalidate>
+      <label class="form-label" for="email">
+        Email
+      </label>
+      <input type="email" name="email" id="email" placeholder="User email" class="form-input" formControlName="email" />
+      <label class="form-label" for="username">
+        Username
+      </label>
+      <input type="text" name="username" id="username" placeholder="User ID" class="form-input"
+        formControlName="username" />
+      <label class="form-label" for="role">
+        Role
+      </label>
+      <select id="role" formControlName="role">
+        <option value="">Select any role</option>
+        <option value="Lead">Lead</option>
+        <option value="PMO">PMO</option>
+      </select>
+      <label class="form-label" for="password">
+        Password
+      </label>
+      <input type="password" name="password" id="password" placeholder="Password" class="form-input"
+        formControlName="password" (change)="onPasswordConfirmPasswordChange()"
+        (keyup)="onPasswordConfirmPasswordChange()" />
+      <label class="form-label" for="confirm-password">
+        Confirm Password
+      </label>
+      <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"
+        class="form-input" formControlName="confirmPassword" (change)="onPasswordConfirmPasswordChange()"
+        (keyup)="onPasswordConfirmPasswordChange()" />
+      <div class="btn-cont">
+        <div class="hover-handler left"></div>
+        <div class="hover-handler right"></div>
+        <button type="submit" class="btn primary-bg-color">Sign up</button>
+      </div>
+      <a href="/login">Already have an account?</a>
+    </form>
+  </div>
+</div>

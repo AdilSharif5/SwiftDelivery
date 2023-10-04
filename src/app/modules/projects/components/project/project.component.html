@@ -1,0 +1,57 @@
+<app-project-details [projectData]="projectData" (changeShowPopupOutput)="changeShowProject(projectData)"
+  *ngIf="showProject === 'block'"></app-project-details>
+
+<div class="projects" *ngIf="showProject !== 'block'">
+  <div class="backdrop" [ngStyle]="{'visibility': showBackdrop}">
+    <div class="custom-modal">
+      <app-add-project (changeShowPopupOutput)="changeShowPopup(projectData)"></app-add-project>
+    </div>
+  </div>
+  <div class="head">
+    <div class="title">
+      Projects
+    </div>
+    <div class="date">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="extra-data">
+    <div class="data">
+      <div class="value">65</div>
+      <div class="label">Projects</div>
+    </div>
+    <div class="data">
+      <div class="value">12</div>
+      <div class="label">Assigned BAs</div>
+    </div>
+    <div class="data">
+      <div class="value">82</div>
+      <div class="label">Total tasks</div>
+    </div>
+    <div class="actions">
+      <div class="btn primary" (click)="changeShowPopup(projectData)">
+        +Add Project
+      </div>
+    </div>
+  </div>
+  <div class="projects-list">
+    <div class="project" (click)="changeShowProject(project)" *ngFor="let project of projects$ | async"
+      [ngStyle]="{'background-color': project.backgroundColor}">
+      <div class="title">{{project.title}}</div>
+      <div class="desc">{{project.desc}}</div>
+      <div class="progress-custom">
+        <div class="title">Progress</div>
+        <div class="bar">
+          <div class="fill" [ngStyle]="{width: project.completed + '%', 'background-color': project.barColor}"></div>
+        </div>
+        <div class="value">{{project.completed}}%</div>
+      </div>
+    </div>
+  </div>
+</div>

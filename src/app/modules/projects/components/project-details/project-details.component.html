@@ -1,0 +1,137 @@
+<div class="tasks">
+  <div class="backdrop" [ngStyle]="{'display': showPopup}">
+    <div class="custom-modal" [ngStyle]="{'display': showPopup}">
+      <app-add-task (changeShowPopupOutput)="changeShowPopup()"></app-add-task>
+    </div>
+  </div>
+  <div class="head">
+    <div class="project-details">
+      <div class="title"><span class="link" (click)="closeParentPopup()">Projects</span> / {{projectData?.title}}
+      </div>
+      <span class=" name">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>PMO Name</mat-label>
+          <input required='true' matInput name="testCaseName" [(ngModel)]="projectData?.involvedPeople[0].name"
+            autocomplete="off" tabindex="-1">
+        </mat-form-field>
+      </span>
+      <span class="name">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Lead Name</mat-label>
+          <mat-select required='true' [(ngModel)]="projectData?.involvedPeople[1].name" name="lead-name" tabindex="-1">
+            <mat-option value="">Select</mat-option>
+            <!-- <mat-option *ngFor="let obj of leadList" [value]="lead"> -->
+            <mat-option [value]="'Upanshu'">
+              Upanshu
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+    </div>
+    <span class="date" style="float:right; align-self: flex-start; padding: 1rem;">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </span>
+  </div>
+  <div class="row" style="overflow: hidden auto; flex: 12; width: fit-content;">
+    <div class="col-md-12 my-4 mx-2" style="width:fit-content;">
+      <div style="box-shadow: 0 0 4px #ccc;">
+        <div class="col-md-12" style="border-radius: 10px;">
+          <div class="row table-header px-4" style="font-weight: 550; font-size: 18px;">
+            <div class="col-md-2 p-0">
+              Task title
+            </div>
+            <div class="col-md-3">
+              Task description
+            </div>
+            <div class="col-md-2">
+              Task status
+            </div>
+            <div class="col-md-4">
+              Task comments
+            </div>
+            <div class="col-md-1">
+              Action
+            </div>
+          </div>
+          <div class="row" style="max-height: 45vh; overflow: hidden auto;">
+            <div class="row table-body" *ngFor="let task of tasks; let $index = index;"
+              style="cursor: pointer; width: 100%;">
+              <div class="col-md-2">
+                <input name="title" [value]="task.title" [disabled]="true" autocomplete="off">
+              </div>
+              <div class="col-md-3">
+                <input name="description" [value]="task.description" [disabled]="true" autocomplete="off">
+              </div>
+              <div class="col-md-2">
+                <mat-select [disabled]="!task.isEdit" [value]="task.status">
+                  <mat-option value="">
+                    Select status
+                  </mat-option>
+                  <mat-option value="done">
+                    done
+                  </mat-option>
+                  <mat-option value="not done">
+                    not done
+                  </mat-option>
+                  <mat-option value="pending">
+                    pending
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="col-md-4">
+                <input name="comment" [value]="task.comment" [disabled]="!task.isEdit" autocomplete="off">
+              </div>
+              <div class="col-md-1">
+                <mat-icon *ngIf="!task.isEdit" (click)="task.isEdit = !task.isEdit">edit</mat-icon>
+                <mat-icon *ngIf="task.isEdit" (click)="task.isEdit = !task.isEdit">save</mat-icon>
+                <mat-icon>delete_forever</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row table-body" style="cursor: pointer; width: 100%;" *ngIf="isAdd">
+          <div class="col-md-2">
+            <input name="title" autocomplete="off" [(ngModel)]="task.title" required="true">
+          </div>
+          <div class="col-md-3">
+            <input name="description" autocomplete="off" [(ngModel)]="task.description" required="true">
+          </div>
+          <div class="col-md-2">
+            <mat-select [(ngModel)]="task.status" required="true">
+              <mat-option value="">
+                Select status
+              </mat-option>
+              <mat-option value="done">
+                done
+              </mat-option>
+              <mat-option value="not done">
+                not done
+              </mat-option>
+              <mat-option value="pending">
+                pending
+              </mat-option>
+            </mat-select>
+          </div>
+          <div class="col-md-4">
+            <input name="comment" autocomplete="off" [(ngModel)]="task.comment" required="true">
+          </div>
+          <div class="col-md-1">
+            <mat-icon>save</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="send">
+    <div class="btn danger" (click)="closeParentPopup()">Close</div>
+    <div class="btn primary" (click)="changeIsAdd()">+Add Task</div>
+    <div class="btn primary">Download Report</div>
+    <div class="btn primary">Send Report</div>
+  </div>
+</div>

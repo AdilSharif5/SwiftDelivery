@@ -1,0 +1,18 @@
+<div class="main-container">
+  <div class="container">
+    <form class="login-form" [formGroup]="loginForm" (submit)="onLogin()" novalidate>
+      <label class="form-label">
+        Username
+        <input type="email" formControlName="username" name="username" placeholder="User ID" class="form-input" />
+      </label>
+      <label class="form-label">
+        Password
+        <input type="password" formControlName="password" name="password" placeholder="Password" class="form-input" />
+      </label>
+      <div class="btn-cont">
+        <button type="submit" class="btn primary-bg-color">Sign in</button>
+      </div>
+      <a href="/signup">Don't have an account?</a>
+    </form>
+  </div>
+</div>

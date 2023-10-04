@@ -1,0 +1,111 @@
+.header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  .head {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .ham {
+      cursor: pointer;
+      width: auto;
+      height: 0.8rem;
+      display: grid;
+      place-items: center;
+
+      .ham-menu {
+        position: relative;
+        width: 1.1rem;
+        height: 0.15rem;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.4rem;
+        border-radius: 10px;
+
+        &::before,
+        &::after {
+          content: " ";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #000;
+          transition: 0.2s;
+          border-radius: 10px;
+        }
+
+        &::before {
+          width: 70%;
+          align-self: end;
+          top: -5px; /* Position the top bar */
+        }
+
+        &::after {
+          width: 70%;
+          bottom: -5px; /* Position the bottom bar */
+        }
+      }
+
+      .ham-menu-inverted {
+        &::before {
+          content: " ";
+          align-self: start;
+          width: 70%;
+          top: -5px; /* Position the top bar */
+        }
+
+        &::after {
+          content: " ";
+          width: 70%;
+          align-self: end;
+          bottom: -5px; /* Position the bottom bar */
+        }
+      }
+    }
+
+    .title {
+      padding: 0 4rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      font-family: Inter;
+
+      .delivery {
+        $line-height: 2px;
+        position: relative;
+        bottom: 1px;
+        display: inline-block;
+        width: 20px;
+        height: $line-height;
+        border-radius: 6px;
+        background-color: #000;
+
+        &::before,
+        &::after {
+          content: " ";
+          position: absolute;
+          height: $line-height;
+          border-radius: 6px;
+          background-color: #000;
+        }
+
+        &::before {
+          width: 15px;
+          top: calc($line-height * -2);
+        }
+
+        &::after {
+          width: 10px;
+          top: calc($line-height * -4);
+        }
+      }
+    }
+  }
+}

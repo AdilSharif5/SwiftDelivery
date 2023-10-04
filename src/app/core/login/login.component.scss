@@ -1,0 +1,50 @@
+.main-container {
+  height: 100vh;
+  background-color: #eaf0ff;
+  display: grid;
+  place-items: center;
+
+  .container {
+    width: 22vw;
+    // height: 35vh;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 8px 8px rgba(215, 215, 215, 0.3);
+  }
+
+  form {
+    padding: 10%;
+
+    label {
+      margin: 10px 0;
+    }
+
+    label,
+    input {
+      display: block;
+      width: 100%;
+    }
+
+    input {
+      margin: 5px 0;
+      font-size: 1.1rem;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #b3b3b3;
+    }
+
+    .btn-cont {
+      text-align: center;
+
+      .btn {
+        margin: 5px;
+        width: 100px;
+        height: 35px;
+        border: none;
+        color: white;
+        background-color: blue;
+        box-shadow: 5px 5px #ccc;
+      }
+    }
+  }
+}

@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@100;400&family=Roboto:wght@100;400;700;900&display=swap");
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+:root {
+  --btn-primary: rgba(36, 160, 237, 0.9) !important;
+  --btn-primary-hover: rgb(36, 160, 237) !important;
+  --btn-secondary: rgba(128, 128, 128, 0.9) !important;
+  --btn-secondary-hover: rgba(128, 128, 128) !important;
+  --btn-success: rgb(3, 179, 98, 0.9) !important;
+  --btn-success-hover: rgb(3, 179, 98, 0.9) !important;
+  --btn-danger: rgba(255, 0, 0, 0.9) !important;
+  --btn-danger-hover: rgba(255, 0, 0, 1) !important;
+  --background-color: rgba(255, 255, 255, 1);
+  --app-background-color: #eaf0ff;
+  --title-color: rgba(0, 0, 0, 1);
+  --light-title-color: rgba (131, 131, 131, 1);
+  --table-header-color: rgba(36, 160, 237, 0.8);
+}
+
+.primary {
+  background-color: var(--btn-primary);
+  font-weight: bold !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--btn-primary-hover) !important;
+  }
+}
+
+.secondary {
+  background-color: var(--btn-secondary);
+  font-weight: bold !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--btn-secondary-hover) !important;
+  }
+}
+
+.success {
+  background-color: var(--btn-success);
+  font-weight: bold !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--btn-success-hover) !important;
+  }
+}
+
+.danger {
+  background-color: var(--btn-danger) !important;
+  font-weight: bold !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--btn-danger-hover) !important;
+  }
+}
+
+.btn {
+  color: white !important;
+}

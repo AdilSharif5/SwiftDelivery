@@ -1,0 +1,136 @@
+.users {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 2.5rem;
+  padding: 2rem;
+
+  .head {
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 700;
+      color: #000;
+      font-family: Inter;
+    }
+
+    .date {
+      font-size: 1.125rem;
+      font-weight: 600;
+      font-family: Inter;
+      color: #8d8d8d;
+
+      #matDatePicker {
+        background: white !important;
+      }
+    }
+  }
+
+  .misc-data {
+    width: 100%;
+    height: 20%;
+    padding: 1.5rem 0;
+    display: flex;
+    gap: 1rem;
+
+    .data {
+      .value {
+        font-family: Inter;
+        font-size: 1.75rem;
+        font-weight: 500;
+        color: var(--title-color);
+      }
+      .label {
+        padding: 0.5rem 0;
+        color: var(--light-title-color);
+        font-family: Inter;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+
+    .btn {
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  .users-list {
+    max-height: 78%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    overflow: hidden auto;
+
+    table {
+      th {
+        height: var(--mat-table-row-item-container-height, 52px);
+        z-index: 20 !important;
+        background-color: var(--table-header-color);
+        color: white;
+      }
+
+      tr {
+        border: none;
+        height: auto;
+
+        &:nth-child(even) {
+          background-color: rgba(36, 160, 237, 0.1);
+        }
+      }
+
+      td {
+        input {
+          width: 90%;
+          height: 30px;
+          margin-block: 5px;
+          border: 1px solid #ccc;
+        }
+
+        input:disabled {
+          background-color: transparent;
+          border: none;
+        }
+
+        mat-icon {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background-color: rgba(50, 50, 50, 0.1);
+
+  .custom-modal {
+    width: 75%;
+    height: 75%;
+    border-radius: 6px;
+    display: block;
+    background-color: var(--background-color);
+    box-shadow: 0 0 10px rgb(210, 210, 210);
+
+    .head {
+      .close-btn {
+        color: red;
+        font-size: 2rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+    }
+  }
+}

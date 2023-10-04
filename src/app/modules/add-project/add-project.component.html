@@ -1,0 +1,180 @@
+<div class="add-project">
+  <div class="body-title">
+    <div class="title">Add Project</div>
+    <div class="close-icon" (click)="changeShowPopup()">
+      <i><span style="font-size: 40px; font-weight: 600;line-height: 0;" class="material-icons close">close</span></i>
+    </div>
+  </div>
+  <div class="row mt-1" style="height: 50vh; overflow: hidden auto;">
+    <div class="mx-auto col-md-12 mt-2" style="width: 100%;">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <span>Project Name: </span>
+            <input class="form-field" type="text" name="projectName" [(ngModel)]="project.name" required>
+          </div>
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Project Name</mat-label>
+            <input matInput name="projectName" [(ngModel)]="project.name" autocomplete="off" required="true">
+          </mat-form-field> -->
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <span>Project Description: </span>
+            <input class="form-field full-width" appearance="outline" type="text" name="projectDescription"
+              [(ngModel)]="project.description" required>
+          </div>
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Project Description</mat-label>
+            <input matInput name="projectDescription" [(ngModel)]="project.description" autocomplete="off"
+              required="true">
+          </mat-form-field> -->
+        </div>
+        <div class="col-md-3">
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Lead</mat-label>
+            <mat-select [(ngModel)]="project.lead" required="true">
+              <mat-option value="">
+                Select Lead
+              </mat-option>
+              <mat-option value="Upanshu">
+                Upanshu
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <div class="form-group">
+            <span>Lead: </span>
+              <mat-select class="form-field full" [(ngModel)]="project.lead" required="true" appearance="outline">
+                <mat-option value="">
+                  Select Lead
+                </mat-option>
+                <mat-option value="Upanshu">
+                  Upanshu
+                </mat-option>
+              </mat-select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <span>Lead: </span>
+            <mat-select class="form-field full-width" [(ngModel)]="project.pmo" required="true">
+              <mat-option value="">
+                Select PMO
+              </mat-option>
+              <mat-option value="Sowjanya">
+                Sowjanya
+              </mat-option>
+            </mat-select>
+          </div>
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>PMO</mat-label>
+            <mat-select [(ngModel)]="project.pmo" required="true">
+              <mat-option value="">
+                Select PMO
+              </mat-option>
+              <mat-option value="Sowjanya">
+                Sowjanya
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        </div>
+      </div>
+      <div class="row" style="overflow: hidden auto; flex: 12; width: 100%;">
+        <div class="col-md-12 my-4" style="width: 100%;">
+          <div style="box-shadow: 0 0 4px #ccc;">
+            <div class="col-md-12" style="border-radius: 10px;">
+              <div class="row table-header px-4" style="font-weight: 550; font-size: 18px;">
+                <div class="col-md-2 p-0">
+                  Task title
+                </div>
+                <div class="col-md-3">
+                  Task description
+                </div>
+                <div class="col-md-2">
+                  Task status
+                </div>
+                <div class="col-md-4">
+                  Task comments
+                </div>
+                <div class="col-md-1">
+                  Action
+                </div>
+              </div>
+              <div class="row" style="max-height: 45vh; overflow: hidden auto;">
+                <div class="row table-body" *ngFor="let task of tasks; let $index = index;"
+                  style="cursor: pointer; width: 100%;">
+                  <div class="col-md-2">
+                    <input name="title" [value]="task.title" [disabled]="true" autocomplete="off">
+                  </div>
+                  <div class="col-md-3">
+                    <input name="description" [value]="task.description" [disabled]="true" autocomplete="off">
+                  </div>
+                  <div class="col-md-2">
+                    <mat-select [value]="task.status" [disabled]="!task.isEdit">
+                      <mat-option value="">
+                        Select status
+                      </mat-option>
+                      <mat-option value="done">
+                        done
+                      </mat-option>
+                      <mat-option value="not done">
+                        not done
+                      </mat-option>
+                      <mat-option value="pending">
+                        pending
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="col-md-4">
+                    <input name="comment" [value]="task.comment" [disabled]="!task.isEdit" autocomplete="off">
+                  </div>
+                  <div class="col-md-1">
+                    <mat-icon *ngIf="!task.isEdit" (click)="task.isEdit = !task.isEdit">edit</mat-icon>
+                    <mat-icon *ngIf="task.isEdit" (click)="updateTaskHandler(task)">save</mat-icon>
+                    <mat-icon (click)="removeTaskHandler(task.id)">delete_forever</mat-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="max-height: 45vh; overflow: hidden auto; margin-top: 0.5rem;">
+                <div class="row table-body" style="cursor: pointer; width: 100%;">
+                  <div class="col-md-2">
+                    <input name="title" autocomplete="off" [(ngModel)]="taskObj.title" required="true">
+                  </div>
+                  <div class="col-md-3">
+                    <input name="description" autocomplete="off" [(ngModel)]="taskObj.description" required="true">
+                  </div>
+                  <div class="col-md-2">
+                    <mat-select [(ngModel)]="taskObj.status" required="true">
+                      <mat-option value="">
+                        Select status
+                      </mat-option>
+                      <mat-option value="done">
+                        done
+                      </mat-option>
+                      <mat-option value="not done">
+                        not done
+                      </mat-option>
+                      <mat-option value="pending">
+                        pending
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="col-md-4">
+                    <input name="comment" autocomplete="off" [(ngModel)]="taskObj.comment" required="true">
+                  </div>
+                  <div class="col-md-1">
+                    <mat-icon (click)="addTaskHandler()">save</mat-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 pr-5"
+    style="width: 100%;margin: 10px auto;flex: 1 0 auto; display: flex; justify-content: end;">
+    <button style="width: 120px;align-self: flex-end;" class="btn primary" (click)="addProjectHandler()">Create</button>
+  </div>
+</div>
