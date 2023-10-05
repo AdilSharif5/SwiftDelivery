@@ -9,7 +9,7 @@
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            await SendAsync(new Response());
+            await SendAsync (new Response());
         }
     }
 }
