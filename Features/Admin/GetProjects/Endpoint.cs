@@ -13,7 +13,7 @@ namespace admin.getprojects
         }
         public override void Configure()
         {
-            Get("admin/getprojects");
+            Get("admin/projects");
             AllowAnonymous();
 
         }
@@ -21,7 +21,8 @@ namespace admin.getprojects
         public override async Task HandleAsync( CancellationToken c)
         {
             var projects = new List<Response>();
-            projects = _dbContext.Projects.Select(x => Map.FromEntity(x)).ToList();
+            projects = _dbContext.Projects
+                        .Select(x => Map.FromEntity(x)).ToList();
             await SendOkAsync(projects);
         }
     }

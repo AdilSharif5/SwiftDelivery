@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SwiftDelivery.Data;
 
-namespace admin.deleteproject
+namespace admin.updateproject
 {
     internal sealed class Endpoint : Endpoint<Request, Response, Mapper>
     {
@@ -13,15 +13,16 @@ namespace admin.deleteproject
         }
         public override void Configure()
         {
-            Delete("admin/projects/{id}");
+            Put("admin/projects/{id}");
             AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            _dbContext.Projects
-                      .First(x => x.ProjectId == r.Id)
-                      .IsActice = false;
+            int ID = Route<int>("id");
+            var projectToupdate = Map.ToEntity(r);
+            projectToupdate.ProjectId = ID;
+            var res = _dbContext.Projects.Update(projectToupdate);
             _dbContext.SaveChanges();
             await SendNoContentAsync();
         }

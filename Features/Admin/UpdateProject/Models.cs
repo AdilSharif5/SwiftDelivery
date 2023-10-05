@@ -1,9 +1,11 @@
-﻿using FastEndpoints;
-
-namespace admin.signup
+﻿namespace admin.updateproject
 {
     internal sealed class Request
     {
+       
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedDate { get; set; }
 
     }
 

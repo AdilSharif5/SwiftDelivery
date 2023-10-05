@@ -1,4 +1,4 @@
-﻿namespace admin.signup
+﻿namespace admin.updateproject
 {
     internal static class Data
     {

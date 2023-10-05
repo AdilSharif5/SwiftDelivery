@@ -15,7 +15,7 @@ namespace admin.addproject
 
         public override void Configure()
         {
-            Post("/admin/addproject");
+            Post("/admin/project");
             AllowAnonymous();
         }
 
@@ -25,7 +25,6 @@ namespace admin.addproject
             _dbContext.Add<Project>(entity);
             _dbContext.SaveChanges();
             await SendCreatedAtAsync<getprojects.Endpoint>(null, Response, generateAbsoluteUrl: true);
-            //await SendAsync(new Response());
         }
     }
 }
