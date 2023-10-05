@@ -22,6 +22,7 @@ namespace admin.getprojects
         {
             var projects = new List<Response>();
             projects = _dbContext.Projects
+                        .Where(x => x.IsActice == true)
                         .Select(x => Map.FromEntity(x)).ToList();
             await SendOkAsync(projects);
         }
