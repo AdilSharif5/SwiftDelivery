@@ -13,6 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFastEndpoints();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.SwaggerDocument();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
+});
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -24,7 +30,7 @@ builder.Services.AddAuthentication(options =>
     jwt.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-       // IssuerSigningKey = new SymmetricSecurityKey(""),
+        // IssuerSigningKey = new SymmetricSecurityKey(""),
         ValidateIssuer = false,// for dev purpose
         ValidateLifetime = true
 
@@ -40,6 +46,7 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
+app.UseCors();
 app.UseFastEndpoints();
 app.UseSwaggerGen();
 app.UseHttpsRedirection();
