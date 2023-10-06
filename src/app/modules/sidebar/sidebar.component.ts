@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   activeInd: number = 0;
+  showpopUp: boolean = false;
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -27,13 +28,16 @@ export class SidebarComponent implements OnInit {
   }
 
   changeActiveIcon(element: any) {
-    const targetele = element.target.parentElement;
+    const targetele =
+      element.target.parentElement.tagName === 'A'
+        ? element.target
+        : element.target.parentElement;
     const iconBtns = document.querySelectorAll('.icon-btn');
     if (!targetele.classList.contains('btn-active')) {
       Array.from(iconBtns).forEach((btn) => {
-        btn.classList.toggle('btn-active');
+        btn.classList.remove('btn-active');
       });
+      targetele.classList.add('btn-active');
     }
-    // console.log('clicked!!');
   }
 }

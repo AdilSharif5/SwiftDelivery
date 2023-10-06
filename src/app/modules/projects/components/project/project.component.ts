@@ -25,10 +25,11 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.projects$ = this.service.getProjects();
     this.projects$.subscribe((e) =>
-      e.forEach((element: any) => {
+      e.map((element: any) => {
         const generatedColor = this.generateRandomColor();
         element.barColor = generatedColor.rgb;
         element.backgroundColor = generatedColor.rgba;
+        // console.log('colors: ', generatedColor);
       })
     );
   }

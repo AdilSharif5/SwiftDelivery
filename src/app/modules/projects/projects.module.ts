@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [{ path: '', component: ProjectComponent }];
 
@@ -28,6 +29,7 @@ const routes: Routes = [{ path: '', component: ProjectComponent }];
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    HttpClientModule
   ],
   exports: [ProjectComponent],
   declarations: [

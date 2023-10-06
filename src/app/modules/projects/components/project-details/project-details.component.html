@@ -6,19 +6,19 @@
   </div>
   <div class="head">
     <div class="project-details">
-      <div class="title"><span class="link" (click)="closeParentPopup()">Projects</span> / {{projectData?.title}}
+      <div class="title"><span class="link" (click)="closeParentPopup()">Projects</span> / {{projectData?.name}}
       </div>
       <span class=" name">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>PMO Name</mat-label>
-          <input required='true' matInput name="testCaseName" [(ngModel)]="projectData?.involvedPeople[0].name"
-            autocomplete="off" tabindex="-1">
+          <input required='true' matInput name="testCaseName" [(ngModel)]="projectData.pmo" autocomplete="off"
+            tabindex="-1">
         </mat-form-field>
       </span>
       <span class="name">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Lead Name</mat-label>
-          <mat-select required='true' [(ngModel)]="projectData?.involvedPeople[1].name" name="lead-name" tabindex="-1">
+          <mat-select required='true' [(ngModel)]="projectData.lead" name="lead-name" tabindex="-1">
             <mat-option value="">Select</mat-option>
             <!-- <mat-option *ngFor="let obj of leadList" [value]="lead"> -->
             <mat-option [value]="'Upanshu'">
@@ -38,8 +38,8 @@
       </mat-form-field>
     </span>
   </div>
-  <div class="row" style="overflow: hidden auto; flex: 12; width: fit-content;">
-    <div class="col-md-12 my-4 mx-2" style="width:fit-content;">
+  <div class="row" style="overflow: hidden auto; flex: 12; width: 100%;">
+    <div class="col-md-12 my-4 mx-2" style="width:100%;">
       <div style="box-shadow: 0 0 4px #ccc;">
         <div class="col-md-12" style="border-radius: 10px;">
           <div class="row table-header px-4" style="font-weight: 550; font-size: 18px;">
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="row" style="max-height: 45vh; overflow: hidden auto;">
-            <div class="row table-body" *ngFor="let task of tasks; let $index = index;"
+            <div class="row table-body" *ngFor="let task of tasks$ | async; let $index = index;"
               style="cursor: pointer; width: 100%;">
               <div class="col-md-2">
                 <input name="title" [value]="task.title" [disabled]="true" autocomplete="off">
@@ -69,7 +69,7 @@
                 <input name="description" [value]="task.description" [disabled]="true" autocomplete="off">
               </div>
               <div class="col-md-2">
-                <mat-select [disabled]="!task.isEdit" [value]="task.status">
+                <mat-select [disabled]="!task.isEdit" [value]="task.status ?? ''">
                   <mat-option value="">
                     Select status
                   </mat-option>
@@ -85,7 +85,7 @@
                 </mat-select>
               </div>
               <div class="col-md-4">
-                <input name="comment" [value]="task.comment" [disabled]="!task.isEdit" autocomplete="off">
+                <input name="comment" [value]="task.comment ?? ''" [disabled]="!task.isEdit" autocomplete="off">
               </div>
               <div class="col-md-1">
                 <mat-icon *ngIf="!task.isEdit" (click)="task.isEdit = !task.isEdit">edit</mat-icon>
@@ -122,7 +122,7 @@
             <input name="comment" autocomplete="off" [(ngModel)]="task.comment" required="true">
           </div>
           <div class="col-md-1">
-            <mat-icon>save</mat-icon>
+            <mat-icon (click)="addTask()">save</mat-icon>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@
   </div>
   <div class="send">
     <div class="btn danger" (click)="closeParentPopup()">Close</div>
-    <div class="btn primary" (click)="changeIsAdd()">+Add Task</div>
+    <div class="btn primary" (click)="changeIsAdd()">{{isAdd ? 'Cancel Add Task' : '+Add Task'}}</div>
     <div class="btn primary">Download Report</div>
     <div class="btn primary">Send Report</div>
   </div>

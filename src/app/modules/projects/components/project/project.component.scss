@@ -105,9 +105,13 @@
         width: 100%;
 
         .title {
+          display: flex;
+          align-items: flex-end;
           text-align: start;
           font-size: 0.75rem;
           font-family: Roboto;
+          padding-bottom: 0.5rem;
+          box-sizing: border-box;
         }
 
         .bar {

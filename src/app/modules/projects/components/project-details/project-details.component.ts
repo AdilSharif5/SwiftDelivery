@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProjectsService } from '../../services/projects.service';
 import { FormControl } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-project-details',
@@ -20,14 +21,23 @@ export class ProejctDetailsComponent implements OnInit {
     description: '',
     status: '',
     comment: '',
+    lead: '',
+    pmo: '',
   };
-  tasks: any[] = [];
+  tasks$: Observable<any> = new Observable();
   date = new FormControl(new Date());
 
   constructor(private service: ProjectsService) {}
 
   ngOnInit() {
-    this.tasks = this.service.getTasks();
+    this.updateTasks();
+  }
+
+  updateTasks() {
+    this.service.getTasks(this.projectData.projectId).subscribe((e: any) => {
+      // console.log('updateTasks: ', e);
+      this.tasks$ = of(e[0].jobs);
+    });
   }
 
   closeParentPopup() {
@@ -42,5 +52,17 @@ export class ProejctDetailsComponent implements OnInit {
 
   changeIsAdd() {
     this.isAdd = !this.isAdd;
+  }
+
+  addTask() {
+    const taskObj = {
+      Title: this.task.title,
+      Description: this.task.description ?? '',
+      status: this.task.status ?? '',
+      Remarks: this.task.comment ?? '',
+    };
+    this.service.addTask(taskObj, this.projectData.projectId).subscribe();
+    this.updateTasks();
+    this.changeIsAdd();
   }
 }

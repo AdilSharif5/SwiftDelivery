@@ -43,16 +43,16 @@
   <div class="projects-list">
     <div class="project" (click)="changeShowProject(project)" *ngFor="let project of projects$ | async"
       [ngStyle]="{'background-color': project.backgroundColor ? project.backgroundColor : generateRandomColor().rgba}">
-      <div class="title">{{project.title}}</div>
-      <div class="desc">{{project.desc}}</div>
+      <div class="title">{{project.name}}</div>
+      <div class="desc">{{project.description}}</div>
       <div class="progress-custom">
         <div class="title">Progress</div>
         <div class="bar">
           <div class="fill"
-            [ngStyle]="{width: project.completed + '%', 'background-color': project.barColor ? project.barColor : newProjectBarColor}">
+            [ngStyle]="{width: project.completed ?? 40 + '%', 'background-color': project.barColor ? project.barColor : newProjectBarColor}">
           </div>
         </div>
-        <div class="value">{{project.completed}}%</div>
+        <div class="value">{{project.completed ?? 40}}%</div>
       </div>
     </div>
   </div>

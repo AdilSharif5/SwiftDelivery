@@ -5,6 +5,7 @@ import {
   EventEmitter,
   ChangeDetectorRef,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +18,12 @@ export class HeaderComponent implements OnInit {
   hamMenuClass: string[] = ['ham-menu'];
   @Output() changeSidebarDisplayOutput = new EventEmitter<any>();
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private route: Router) {}
 
   ngOnInit() {}
 
   changeSidebarDisplay() {
-    // Not working menu icon is not updating, check later!
+    // Not working menu icon is not updating, check later! Still not working :(
     // document.querySelector('.ham-menu')?.classList.toggle('ham-menu-inverted');
     // console.log(this.hamMenuClass);
     this.isHamMenuInverted = !this.isHamMenuInverted;
@@ -30,5 +31,10 @@ export class HeaderComponent implements OnInit {
     this.cdr.detectChanges();
     this.sidebarisplay = this.sidebarisplay === 'block' ? 'none' : 'block';
     this.changeSidebarDisplayOutput.emit();
+  }
+
+  logout() {
+    console.log('logout!');
+    this.route.navigate(['/login'], { replaceUrl: true });
   }
 }

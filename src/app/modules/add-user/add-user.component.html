@@ -8,57 +8,62 @@
   </div>
   <div class="row mt-1" style="height: 42vh; overflow: hidden auto; flex: 10;">
     <div class="mx-auto col-md-12 mt-5" style="width: fit-content;">
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field class="full-width" appearance="outline">
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
             <mat-label>User Name</mat-label>
             <input matInput name="username" autocomplete="off">
-          </mat-form-field>
+          </mat-form-field> -->
+          <div class="form-group">
+            <span>User Name</span>
+            <input class="form-field" type="text" name="userName" required>
+          </div>
         </div>
-        <div class="col-md-6">
-          <mat-form-field class="full-width" appearance="outline">
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
             <mat-label>Role</mat-label>
             <input matInput name="role" autocomplete="off">
-            <!-- <mat-select>
-              <mat-option value="">
-                Select Lead
-              </mat-option>
-              <mat-option value="1">
-                Upanshu
-              </mat-option>
-              <mat-option value="0">
-                Not Done
-              </mat-option>
-              <mat-option value="-1">
-                Pending
-              </mat-option> -->
-            <!-- <mat-option *ngFor="let obj of statesList" [value]="obj.id">
-                {{obj.name}}
-              </mat-option> -->
-            <!-- </mat-select> -->
-          </mat-form-field>
+          </mat-form-field> -->
+          <div class="form-group">
+            <span>Role</span>
+            <input class="form-field" type="text" name="role" required>
+          </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mb-2">
         <!-- <div class="col-md-12"> -->
-        <mat-form-field class="full-width" appearance="outline">
+        <!-- <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput name="comment" autocomplete="off">
-        </mat-form-field>
+        </mat-form-field> -->
         <!-- </div> -->
+        <div class="form-group">
+          <input class="form-field" type="text" name="projectName" required>
+          <span>@aggne.com</span>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field class="full-width" appearance="outline">
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
             <mat-label>Pasword</mat-label>
             <input matInput style="width: 80% !important;" [type]="showPassword ? 'text' : 'password'" name="password"
               autocomplete="off">
             <span><mat-icon matSuffix (click)="showPassword = !showPassword">{{showPassword ?
                 'visibility' :
                 'visibility_off'}}</mat-icon></span>
-          </mat-form-field>
+          </mat-form-field> -->
+          <div class="form-group">
+            <span>Password</span>
+            <input class="form-field" type="text" name="projectName" [type]="showPassword ? 'text' : 'password'"
+              required>
+            <mat-icon class="show-hide-password" matSuffix (click)="showPassword = !showPassword">{{showPassword ?
+              'visibility' :
+              'visibility_off'}}</mat-icon>
+          </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Confirm Password</mat-label>
             <input matInput style="width: 80% !important;" [type]="showPassword ? 'text' : 'password'" type="password"
@@ -67,6 +72,18 @@
                 'visibility' :
                 'visibility_off'}}</mat-icon></span>
           </mat-form-field>
+        </div> -->
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <div class="form-group">
+            <span>Confirm Password</span>
+            <input class="form-field" type="text" name="projectName" [type]="showPassword ? 'text' : 'password'"
+              required>
+            <mat-icon class="show-hide-password" matSuffix (click)="showPassword = !showPassword">{{showPassword ?
+              'visibility' :
+              'visibility_off'}}</mat-icon>
+          </div>
         </div>
       </div>
     </div>

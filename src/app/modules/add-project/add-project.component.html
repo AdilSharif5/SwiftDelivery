@@ -44,19 +44,19 @@
           </mat-form-field> -->
           <div class="form-group">
             <span>Lead: </span>
-              <mat-select class="form-field full" [(ngModel)]="project.lead" required="true" appearance="outline">
-                <mat-option value="">
-                  Select Lead
-                </mat-option>
-                <mat-option value="Upanshu">
-                  Upanshu
-                </mat-option>
-              </mat-select>
+            <mat-select class="form-field full" [(ngModel)]="project.lead" required="true" appearance="outline">
+              <mat-option value="">
+                Select Lead
+              </mat-option>
+              <mat-option value="Upanshu">
+                Upanshu
+              </mat-option>
+            </mat-select>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <span>Lead: </span>
+            <span>PMO: </span>
             <mat-select class="form-field full-width" [(ngModel)]="project.pmo" required="true">
               <mat-option value="">
                 Select PMO
@@ -174,7 +174,8 @@
     </div>
   </div>
   <div class="col-md-12 pr-5"
-    style="width: 100%;margin: 10px auto;flex: 1 0 auto; display: flex; justify-content: end;">
-    <button style="width: 120px;align-self: flex-end;" class="btn primary" (click)="addProjectHandler()">Create</button>
+    style="width: 100%; margin: 10px auto; flex: 1 0 auto; display: flex; justify-content: end;">
+    <button style="width: 120px;align-self: flex-end;" class="btn primary"
+      *ngIf="project.name !== '' && project.description !== ''" (click)="addProjectHandler()">Create</button>
   </div>
 </div>

@@ -2,13 +2,12 @@
   width: 100%;
   height: 10%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
   padding-top: 2rem;
-  padding-bottom: 1rem;
 
   .head {
-    width: 100%;
     height: 10%;
     display: flex;
     align-items: center;
@@ -106,6 +105,13 @@
           top: calc($line-height * -4);
         }
       }
+    }
+  }
+
+  .user-details {
+    img {
+      width: 2.3rem;
+      height: 2.3rem;
     }
   }
 }
