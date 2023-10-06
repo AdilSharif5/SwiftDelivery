@@ -1,4 +1,4 @@
-﻿namespace admin.getprojectjobs
+﻿namespace user.getprojectjobs
 {
     internal static class Data
     {

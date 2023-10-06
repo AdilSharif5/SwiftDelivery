@@ -10,6 +10,7 @@ namespace admin.getprojects
         public string Description { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
+        public int PercentageOfStatus { get; set; }
 
     }
 

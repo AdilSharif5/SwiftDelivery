@@ -1,6 +1,6 @@
 ﻿using SwiftDelivery.Entities;
 
-namespace admin.getprojectjobs
+namespace user.getprojectjobs
 {
     internal sealed class Request
     {
@@ -18,5 +18,6 @@ namespace admin.getprojectjobs
     internal sealed class Response
     {
         public List<Job>? Jobs { get; set; }
+        public int PercentageOfCompletion { get; set; }
     }
 }

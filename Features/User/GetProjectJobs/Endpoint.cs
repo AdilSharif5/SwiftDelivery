@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SwiftDelivery.Data;
 
-namespace admin.getprojectjobs
+namespace user.getprojectjobs
 {
     internal sealed class Endpoint : Endpoint<Request, Response, Mapper>
     {
@@ -22,10 +22,10 @@ namespace admin.getprojectjobs
         {
             var projects = new Response();
             projects = _dbContext.Projects
-                        .Where(p => p.ProjectId == r.Id)
-                        .Where(x => x.IsActive == true)
-                        .Include(p => p.Jobs)
-                        .Select(x => Map.FromEntity(x)).FirstOrDefault();
+                                 .Where(p => p.ProjectId == r.Id)
+                                 .Where(x => x.IsActive == true)
+                                 .Include(p => p.Jobs)
+                                 .Select(x => Map.FromEntity(x)).FirstOrDefault();
             await SendOkAsync(projects);
         }
     }
