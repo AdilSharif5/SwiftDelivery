@@ -18,10 +18,10 @@ namespace user.deletejob
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            var jobentity = _dbContext.Projects.Find(r.Id);
+            var jobentity = _dbContext.Jobs.Find(r.Id);
             if (jobentity == null) {
             await SendNotFoundAsync(); }
-            _ = _dbContext.Projects.Remove(jobentity!);
+            _ = _dbContext.Jobs.Remove(jobentity!);
             _dbContext.SaveChanges();
             await SendNoContentAsync();
         }
