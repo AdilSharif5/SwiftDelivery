@@ -15,7 +15,7 @@ namespace admin.addproject
 
         public override void Configure()
         {
-            Post("/admin/project");
+            Post("/admin/projects");
             AllowAnonymous();
         }
 

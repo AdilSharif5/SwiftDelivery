@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SwiftDelivery.Entities;
+using Job = SwiftDelivery.Entities.Job;
 
 namespace SwiftDelivery.Data
 {
@@ -11,6 +12,6 @@ namespace SwiftDelivery.Data
 
         }
         public DbSet<Project> Projects { get; set; }
-
+        public DbSet<Job> Jobs { get; set; }
     }
 }

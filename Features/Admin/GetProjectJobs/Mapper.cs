@@ -1,8 +1,8 @@
 ﻿using SwiftDelivery.Entities;
 
-namespace admin.getprojects
+namespace admin.getprojectjobs
 {
-    internal sealed class Mapper : ResponseMapper<Response, Project>
+    internal sealed class Mapper : Mapper<Request, Response, Project>
     {
         public override Response FromEntity(Project e) => new Response()
         {
@@ -10,8 +10,8 @@ namespace admin.getprojects
             Name = e.Name,
             Description = e.Description,
             CreatedDate = e.CreatedDate,
-            LastUpdatedDate = e.LastUpdatedDate
+            LastUpdatedDate = e.LastUpdatedDate,
+            Jobs = e.Jobs
         };
-
     }
 }

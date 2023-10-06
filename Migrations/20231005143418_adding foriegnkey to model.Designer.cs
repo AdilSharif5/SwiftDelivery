@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwiftDelivery.Data;
 
@@ -11,9 +12,11 @@ using SwiftDelivery.Data;
 namespace SwiftDelivery.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231005143418_adding foriegnkey to model")]
+    partial class addingforiegnkeytomodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,11 +225,11 @@ namespace SwiftDelivery.Migrations
 
             modelBuilder.Entity("SwiftDelivery.Entities.Job", b =>
                 {
-                    b.Property<int>("JobId")
+                    b.Property<int>("JobID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JobId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JobID"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -245,7 +248,7 @@ namespace SwiftDelivery.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("JobId");
+                    b.HasKey("JobID");
 
                     b.HasIndex("ProjectId");
 
@@ -269,9 +272,6 @@ namespace SwiftDelivery.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime>("LastUpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()

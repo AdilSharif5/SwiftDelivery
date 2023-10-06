@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SwiftDelivery.Data;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddFastEndpoints();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.SwaggerDocument();
+builder.Services.SwaggerDocument(o =>
+{
+    o.SerializerSettings = s =>
+    {
+        s.PropertyNamingPolicy = null;
+        s.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    };
+});
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

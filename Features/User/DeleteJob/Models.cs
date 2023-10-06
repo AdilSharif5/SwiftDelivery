@@ -1,12 +1,8 @@
-﻿namespace admin.updateproject
+﻿namespace user.deletejob
 {
     internal sealed class Request
     {
-       
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public DateTime UpdatedDate { get; set; }
-
+        public int Id { get; set; }
     }
 
     internal sealed class Validator : Validator<Request>

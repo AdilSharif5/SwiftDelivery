@@ -1,7 +1,19 @@
 ﻿using SwiftDelivery.Entities;
 
-namespace admin.getprojects
+namespace admin.getprojectjobs
 {
+    internal sealed class Request
+    {
+        public int Id { get; set; }
+    }
+
+    internal sealed class Validator : Validator<Request>
+    {
+        public Validator()
+        {
+
+        }
+    }
 
     internal sealed class Response
     {
@@ -11,6 +23,6 @@ namespace admin.getprojects
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
 
+        public List<Job>? Jobs { get; set; }
     }
-
 }

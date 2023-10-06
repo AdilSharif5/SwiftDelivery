@@ -8,8 +8,8 @@ namespace admin.updateproject
         {
             Name = r.Name,
             Description = r.Description,
-            CreatedDate = r.CreatedDate,
-            IsActice = true,
+            LastUpdatedDate = r.UpdatedDate,
+            IsActive = true,
         };
 
     }

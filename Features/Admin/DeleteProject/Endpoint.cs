@@ -21,7 +21,7 @@ namespace admin.deleteproject
         {
             _dbContext.Projects
                       .First(x => x.ProjectId == r.Id)
-                      .IsActice = false;
+                      .IsActive = false;
             _dbContext.SaveChanges();
             await SendNoContentAsync();
         }

@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SwiftDelivery.Data;
+﻿using SwiftDelivery.Data;
 
-namespace admin.updateproject
+namespace user.getjob
 {
     internal sealed class Endpoint : Endpoint<Request, Response, Mapper>
     {
@@ -13,18 +12,18 @@ namespace admin.updateproject
         }
         public override void Configure()
         {
-            Put("admin/projects/{id}");
+            Get("user/jobs/{id}");
             AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            int id = Route<int>("id");
-            var projectToupdate = Map.ToEntity(r);
-            projectToupdate.ProjectId = id;
-            var res = _dbContext.Projects.Update(projectToupdate);
-            _dbContext.SaveChanges();
-            await SendNoContentAsync();
+            var jobentity = _dbContext.Jobs
+                                      .Where(j => j.JobId == r.Id)
+                                      .Select( j => Map.FromEntity(j)).FirstOrDefault();
+            if (jobentity == null)
+                await SendNotFoundAsync();
+            await SendOkAsync(jobentity!);
         }
     }
 }

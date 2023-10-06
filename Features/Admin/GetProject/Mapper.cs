@@ -1,17 +1,15 @@
 ﻿using SwiftDelivery.Entities;
 
-namespace admin.getprojects
+namespace admin.getproject
 {
-    internal sealed class Mapper : ResponseMapper<Response, Project>
+    internal sealed class Mapper : Mapper<Request, Response, Project>
     {
         public override Response FromEntity(Project e) => new Response()
         {
             ProjectId = e.ProjectId,
             Name = e.Name,
             Description = e.Description,
-            CreatedDate = e.CreatedDate,
-            LastUpdatedDate = e.LastUpdatedDate
+            CreatedDate = e.CreatedDate
         };
-
     }
 }

@@ -1,11 +1,11 @@
-﻿namespace admin.updateproject
+﻿namespace user.updatejob
 {
     internal sealed class Request
     {
-       
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public DateTime UpdatedDate { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string? Description { get; set; }
+        public string status { get; set; } = string.Empty;
+        public string? Remarks { get; set; }
 
     }
 

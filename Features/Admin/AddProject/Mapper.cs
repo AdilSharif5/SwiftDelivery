@@ -9,7 +9,7 @@ namespace admin.addproject
             Name = r.Name,
             Description = r.Description,
             CreatedDate = r.CreatedDate,
-            IsActice = true,
+            IsActive = true,
         };
 
     }

@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Namotion.Reflection;
 using SwiftDelivery.Data;
-using SwiftDelivery.Entities;
 
-namespace admin.getprojects
+namespace admin.getproject
 {
-    internal sealed class Endpoint : EndpointWithoutRequest<List<Response>, Mapper>
+    internal sealed class Endpoint : Endpoint<Request, List<Response>, Mapper>
     {
+
         private DataContext _dbContext;
 
         public Endpoint(DataContext dbContext)
@@ -14,15 +14,15 @@ namespace admin.getprojects
         }
         public override void Configure()
         {
-            Get("admin/projects");
+            Get("admin/projects/{id}");
             AllowAnonymous();
-
         }
 
-        public override async Task HandleAsync( CancellationToken c)
+        public override async Task HandleAsync(Request r, CancellationToken c)
         {
             var projects = new List<Response>();
             projects = _dbContext.Projects
+                        .Where(x => x.ProjectId == r.Id)
                         .Where(x => x.IsActive == true)
                         .Select(x => Map.FromEntity(x)).ToList();
             await SendOkAsync(projects);

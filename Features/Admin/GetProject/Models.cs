@@ -1,7 +1,17 @@
-﻿using SwiftDelivery.Entities;
-
-namespace admin.getprojects
+﻿namespace admin.getproject
 {
+    internal sealed class Request
+    {
+        public int Id { get; set; }
+    }
+
+    internal sealed class Validator : Validator<Request>
+    {
+        public Validator()
+        {
+
+        }
+    }
 
     internal sealed class Response
     {
@@ -12,5 +22,4 @@ namespace admin.getprojects
         public DateTime LastUpdatedDate { get; set; }
 
     }
-
 }
