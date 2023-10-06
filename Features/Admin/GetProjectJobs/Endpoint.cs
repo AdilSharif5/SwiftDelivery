@@ -3,7 +3,7 @@ using SwiftDelivery.Data;
 
 namespace admin.getprojectjobs
 {
-    internal sealed class Endpoint : Endpoint<Request, List<Response>, Mapper>
+    internal sealed class Endpoint : Endpoint<Request, Response, Mapper>
     {
 
         private DataContext _dbContext;
@@ -14,17 +14,18 @@ namespace admin.getprojectjobs
         }
         public override void Configure()
         {
-            Get("admin/Prjects/{id}/jobs");
+            Get("admin/Projects/{id}/jobs");
             AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            var projects = new List<Response>();
+            var projects = new Response();
             projects = _dbContext.Projects
+                        .Where(p => p.ProjectId == r.Id)
                         .Where(x => x.IsActive == true)
                         .Include(p => p.Jobs)
-                        .Select(x => Map.FromEntity(x)).ToList();
+                        .Select(x => Map.FromEntity(x)).FirstOrDefault();
             await SendOkAsync(projects);
         }
     }
