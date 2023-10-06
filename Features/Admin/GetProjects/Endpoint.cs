@@ -24,6 +24,7 @@ namespace admin.getprojects
             var projects = new List<Response>();
             projects = _dbContext.Projects
                         .Where(x => x.IsActive == true)
+                        .Include(p => p.Jobs)
                         .Select(x => Map.FromEntity(x)).ToList();
             await SendOkAsync(projects);
         }
