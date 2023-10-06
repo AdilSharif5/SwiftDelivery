@@ -6,6 +6,7 @@ namespace user.getjob
     {
         public override Response FromEntity(Job e) => new Response()
         {
+            JobId = e.JobId,
             Title = e.Title,
             Description = e.Description,
             Remarks = e.Remarks,

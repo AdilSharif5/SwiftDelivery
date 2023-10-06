@@ -9,6 +9,7 @@ namespace user.addjob
             Title = r.Title,
             Remarks = r.Remarks,
             Description = r.Description,
+            Status = r.status
         };
 
     }

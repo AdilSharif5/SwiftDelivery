@@ -15,6 +15,7 @@
 
     internal sealed class Response
     {
+        public int JobId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
         public string status { get; set; } = string.Empty;
