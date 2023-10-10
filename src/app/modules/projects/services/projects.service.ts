@@ -130,7 +130,7 @@ export class ProjectsService {
   }
 
   addProject(project: any) {
-    return this.http.post(`${this.adminApi}/project`, project);
+    return this.http.post(`${this.adminApi}/projects`, project);
     // const availableDuplicates = this.checkDuplicates({
     //   from: this.projects,
     //   args: ['name'],
@@ -193,7 +193,7 @@ export class ProjectsService {
   // }
 
   getTasks(projectId: number) {
-    return this.http.get(`${this.adminApi}/Prjects/${projectId}/jobs`, {
+    return this.http.get(`${this.adminApi}/Projects/${projectId}/jobs`, {
       headers: this.headers,
     });
     // return [...this.tasks];
@@ -208,16 +208,22 @@ export class ProjectsService {
     // this.tasks.push(task);
   }
 
-  updateTask(task: any) {
-    this.tasks = this.tasks.map((taskElement) => {
-      if (taskElement.id === task.id) {
-        return task;
-      }
-      return taskElement;
-    });
+  updateTask(task: any, projectId: number) {
+    return this.http
+      .put(`${this.userApi}/Projects/${projectId}/jobs/${task.jobID}`, task, {
+        headers: this.headers,
+      })
+      .subscribe();
+    // this.tasks = this.tasks.map((taskElement) => {
+    //   if (taskElement.id === task.id) {
+    //     return task;
+    //   }
+    //   return taskElement;
+    // });
   }
 
   removeTask(id: number) {
+    return this.http.delete(`${this.userApi}/jobs/${id}`).subscribe();
     this.tasks = this.tasks.filter((task) => parseInt(task.id) !== id);
   }
 }

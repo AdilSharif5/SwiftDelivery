@@ -3,6 +3,7 @@
   width: 100%;
   height: 100%;
   background-color: white;
+  border-radius: 1rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -75,6 +76,7 @@
   font-family: inherit;
   border-radius: 6px;
   -webkit-appearance: none;
+  appearance: none;
   color: var(--input-color);
   border: 1px solid var(--input-border);
   background: var(--input-background);
@@ -108,10 +110,12 @@
   position: relative;
   display: flex;
   width: 100%;
+
   & > span,
   .form-field {
     white-space: nowrap;
     display: block;
+
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
     }
@@ -125,6 +129,7 @@
       margin-left: -1px;
     }
   }
+
   .form-field {
     position: relative;
     z-index: 1;
@@ -133,6 +138,7 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
   & > span {
     display: grid;
     place-items: center;
@@ -145,6 +151,7 @@
     border: 1px solid var(--group-border);
     transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
   }
+
   &:focus-within {
     & > span {
       color: var(--group-color-focus);

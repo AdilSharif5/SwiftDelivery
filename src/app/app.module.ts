@@ -20,6 +20,7 @@ import {
   NgxUiLoaderHttpModule,
   NgxUiLoaderModule,
 } from 'ngx-ui-loader';
+import { ToastrModule } from 'ngx-toastr';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#00b3ff',
@@ -67,6 +68,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatSelectModule,
     MatIconModule,
     ViewModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({ showForeground: true, delay: 1000 }),
   ],

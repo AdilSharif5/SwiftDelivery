@@ -23,6 +23,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.3.2",
     "material-icons": "^1.13.11",
+    "ngx-toastr": "^17.0.2",
     "ngx-ui-loader": "^13.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

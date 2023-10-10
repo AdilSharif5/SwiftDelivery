@@ -38,7 +38,7 @@
       </mat-form-field>
     </span>
   </div>
-  <div class="row" style="overflow: hidden auto; flex: 12; width: 100%;">
+  <div class="row" style="flex: 12; width: 100%;">
     <div class="col-md-12 my-4 mx-2" style="width:100%;">
       <div style="box-shadow: 0 0 4px #ccc;">
         <div class="col-md-12" style="border-radius: 10px;">
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="row" style="max-height: 45vh; overflow: hidden auto;">
-            <div class="row table-body" *ngFor="let task of tasks$ | async; let $index = index;"
+            <div class="row table-body" *ngFor="let task of tasks; let $index = index;"
               style="cursor: pointer; width: 100%;">
               <div class="col-md-2">
                 <input name="title" [value]="task.title" [disabled]="true" autocomplete="off">
@@ -69,7 +69,7 @@
                 <input name="description" [value]="task.description" [disabled]="true" autocomplete="off">
               </div>
               <div class="col-md-2">
-                <mat-select [disabled]="!task.isEdit" [value]="task.status ?? ''">
+                <mat-select [disabled]="!task.isEdit" [value]="task.status" [(ngModel)]="task.status">
                   <mat-option value="">
                     Select status
                   </mat-option>
@@ -85,12 +85,13 @@
                 </mat-select>
               </div>
               <div class="col-md-4">
-                <input name="comment" [value]="task.comment ?? ''" [disabled]="!task.isEdit" autocomplete="off">
+                <input name="comment" [value]="task.remarks ?? ''" [(ngModel)]="task.remarks" [disabled]=" !task.isEdit"
+                  autocomplete="off">
               </div>
               <div class="col-md-1">
                 <mat-icon *ngIf="!task.isEdit" (click)="task.isEdit = !task.isEdit">edit</mat-icon>
-                <mat-icon *ngIf="task.isEdit" (click)="task.isEdit = !task.isEdit">save</mat-icon>
-                <mat-icon>delete_forever</mat-icon>
+                <mat-icon *ngIf="task.isEdit" (click)="updateTask(task)">save</mat-icon>
+                <mat-icon (click)="removeTask(task)">delete_forever</mat-icon>
               </div>
             </div>
           </div>

@@ -19,9 +19,14 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <div class="actions">
+        <div class="btn primary" (click)="changeShowPopup(projectData)">
+          +Add Project
+        </div>
+      </div>
     </div>
   </div>
-  <div class="extra-data">
+  <!-- <div class="extra-data">
     <div class="data">
       <div class="value">65</div>
       <div class="label">Projects</div>
@@ -34,12 +39,8 @@
       <div class="value">82</div>
       <div class="label">Total tasks</div>
     </div>
-    <div class="actions">
-      <div class="btn primary" (click)="changeShowPopup(projectData)">
-        +Add Project
-      </div>
-    </div>
-  </div>
+
+  </div> -->
   <div class="projects-list">
     <div class="project" (click)="changeShowProject(project)" *ngFor="let project of projects$ | async"
       [ngStyle]="{'background-color': project.backgroundColor ? project.backgroundColor : generateRandomColor().rgba}">
@@ -49,10 +50,10 @@
         <div class="title">Progress</div>
         <div class="bar">
           <div class="fill"
-            [ngStyle]="{width: project.completed ?? 40 + '%', 'background-color': project.barColor ? project.barColor : newProjectBarColor}">
+            [ngStyle]="{width:  project.percentageOfStatus + '%', 'background-color': project.barColor ? project.barColor : newProjectBarColor}">
           </div>
         </div>
-        <div class="value">{{project.completed ?? 40}}%</div>
+        <div class="value">{{project.percentageOfStatus}}%</div>
       </div>
     </div>
   </div>

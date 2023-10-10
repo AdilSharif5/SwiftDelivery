@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
 
-  constructor() {
+  constructor(
+    private loaderService: NgxUiLoaderService,
+    private toastrService: ToastrService
+  ) {
     this.signupForm = new FormGroup({
       email: new FormControl('', Validators.required),
       username: new FormControl('', Validators.required),
@@ -17,6 +22,10 @@ export class SignupComponent implements OnInit {
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
     });
+  }
+
+  log() {
+    console.log('log it to the console!');
   }
 
   ngOnInit() {}
@@ -28,6 +37,30 @@ export class SignupComponent implements OnInit {
     } else {
       this.setBtnEffect(false);
     }
+  }
+
+  onRegister() {
+    if (!this.signupForm.invalid) {
+      this.loaderService.start();
+      const formData = this.signupForm.value;
+
+      // this.authService.login(this.loginForm.value).then(
+      //   (res: any) => {
+      //     console.log('Login successful...');
+      //     this.spinner.stop();
+      //   },
+      //   (err: any) => {
+      //     this.toastrService.error(err, 'Login Error');
+      //     this.spinner.stop();
+      //   }
+      // );
+    } else {
+      this.toastrService.error(
+        'Please enter the valid credentials',
+        'Login Error'
+      );
+    }
+    this.loaderService.stop();
   }
 
   setBtnEffect(status: boolean) {

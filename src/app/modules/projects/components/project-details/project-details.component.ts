@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProjectsService } from '../../services/projects.service';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-project-details',
@@ -24,20 +25,25 @@ export class ProejctDetailsComponent implements OnInit {
     lead: '',
     pmo: '',
   };
-  tasks$: Observable<any> = new Observable();
+  tasks: any[] = [];
   date = new FormControl(new Date());
 
-  constructor(private service: ProjectsService) {}
+  constructor(
+    private service: ProjectsService,
+    private loaderService: NgxUiLoaderService
+  ) {}
 
   ngOnInit() {
     this.updateTasks();
   }
 
   updateTasks() {
-    this.service.getTasks(this.projectData.projectId).subscribe((e: any) => {
-      // console.log('updateTasks: ', e);
-      this.tasks$ = of(e[0].jobs);
-    });
+    return this.service
+      .getTasks(this.projectData.projectId)
+      .subscribe((e: any) => {
+        console.log('updateTasks: ', e);
+        this.tasks = e.jobs;
+      });
   }
 
   closeParentPopup() {
@@ -55,6 +61,7 @@ export class ProejctDetailsComponent implements OnInit {
   }
 
   addTask() {
+    this.loaderService.start();
     const taskObj = {
       Title: this.task.title,
       Description: this.task.description ?? '',
@@ -63,6 +70,35 @@ export class ProejctDetailsComponent implements OnInit {
     };
     this.service.addTask(taskObj, this.projectData.projectId).subscribe();
     this.updateTasks();
+    this.updateTasks();
+    this.updateTasks();
     this.changeIsAdd();
+    this.loaderService.stop();
+    this.task = {
+      id: 0,
+      title: '',
+      description: '',
+      status: '',
+      comment: '',
+      lead: '',
+      pmo: '',
+    };
+  }
+
+  updateTask(task: any) {
+    task.isEdit = !task.isEdit;
+    console.log(task);
+    const taskObj = {
+      jobID: task.jobId,
+      Title: task.title,
+      Description: task.description ?? '',
+      status: task.status ?? '',
+      Remarks: task.remarks ?? '',
+    };
+    this.service.updateTask(taskObj, this.projectData.projectId);
+  }
+
+  removeTask(task: any) {
+    this.service.removeTask(task.jobId);
   }
 }

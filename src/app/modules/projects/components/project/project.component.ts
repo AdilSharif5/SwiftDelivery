@@ -25,7 +25,8 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.projects$ = this.service.getProjects();
     this.projects$.subscribe((e) =>
-      e.map((element: any) => {
+      e.forEach((element: any) => {
+        console.log('element', element);
         const generatedColor = this.generateRandomColor();
         element.barColor = generatedColor.rgb;
         element.backgroundColor = generatedColor.rgba;
@@ -92,5 +93,17 @@ export class ProjectComponent implements OnInit {
 
   fetchProjectsHandler() {
     this.projects$ = this.service.getProjects();
+  }
+
+  generateRandomProgress() {
+    return Math.round(Math.random() * 10);
+  }
+
+  calcProgress(project: any) {
+    console.log(project);
+    const percentage = Math.round(
+      (project.totalJobsDoneCount / project.totalJobsCount) * 100
+    );
+    return percentage ? percentage : 0;
   }
 }

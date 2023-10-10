@@ -19,6 +19,10 @@
       cursor: pointer;
     }
 
+    // mat-icon {
+    //   color: var(--highlight-active-tab);
+    // }
+
     svg {
       cursor: pointer;
       width: 50%;
@@ -30,6 +34,7 @@
   .btn-active {
     cursor: pointer;
     background-color: #000;
+    // background-color: var(--highlight-active-tab);
     .mat-icon {
       color: white;
     }

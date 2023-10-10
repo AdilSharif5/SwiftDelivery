@@ -1,6 +1,8 @@
 .main-container {
   height: 100vh;
-  background-color: #eaf0ff;
+  // background-color: #eaf0ff;
+  background: url("../../../assets/images/background.jpg");
+  background-size: cover;
   display: grid;
   place-items: center;
 
@@ -8,7 +10,8 @@
     width: 25vw;
     // height: 60vh;
     border-radius: 16px;
-    background-color: white;
+    // background-color: white;
+    background-color: #f2d8d8;
     box-shadow: 8px 8px #ccc;
   }
   form {
@@ -30,12 +33,14 @@
       outline: none;
       border: none;
       border-bottom: 1px solid #b3b3b3;
+      background-color: #f2d8d8;
     }
 
     select {
       width: 100%;
       border: 1px solid #ccc;
       padding: 5px 10px;
+      background-color: #f2d8d8;
     }
 
     .btn-cont {
@@ -50,10 +55,8 @@
         height: 35px;
         border: none;
         color: white;
-        background-color: blue;
         box-shadow: 5px 5px #ccc;
         transition: transform 150ms ease;
-        pointer-events: none;
       }
 
       .hover-handler.active {
@@ -68,12 +71,16 @@
             transform: translateX(-50%);
           }
         }
+
+        & ~ .btn { // stops the click function
+          pointer-events: none;
+        }
       }
     }
   }
 
   .hover-handler {
-    display: block;
+    display: none;
     width: 50%;
     height: 100%;
     position: absolute;

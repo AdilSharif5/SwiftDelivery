@@ -1,16 +1,23 @@
 <div class="main-container">
   <div class="container">
     <form class="login-form" [formGroup]="loginForm" (submit)="onLogin()" novalidate>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label> Username</mat-label>
+        <input required='true' matInput formControlName="username" name="testCaseName" [(ngModel)]="projectData.pmo" autocomplete="off"
+          tabindex="-1">
+      </mat-form-field>
       <label class="form-label">
         Username
-        <input type="email" formControlName="username" name="username" placeholder="User ID" class="form-input" />
+        <input type="email" formControlName="username" name="username" placeholder="User ID" class="form-input"
+          required="true" />
       </label>
       <label class="form-label">
         Password
-        <input type="password" formControlName="password" name="password" placeholder="Password" class="form-input" />
+        <input type="password" formControlName="password" name="password" placeholder="Password" class="form-input"
+          required="true" />
       </label>
       <div class="btn-cont">
-        <button type="submit" class="btn primary-bg-color">Sign in</button>
+        <button type="submit" class="btn primary">Sign in</button>
       </div>
       <a href="/signup">Don't have an account?</a>
     </form>

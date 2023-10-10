@@ -12,8 +12,9 @@ export class AddProjectComponent implements OnInit {
   project: any = {
     name: '',
     description: '',
+    user: '',
     lead: '',
-    pmo: '',
+    leadEmail: '',
     tasks: [],
   };
   taskObj: any = {

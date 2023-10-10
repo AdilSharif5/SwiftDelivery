@@ -37,6 +37,7 @@ body {
   --title-color: rgba(0, 0, 0, 1);
   --light-title-color: rgba (131, 131, 131, 1);
   --table-header-color: rgba(36, 160, 237, 0.8);
+  --highlight-active-tab: rgb(36, 160, 237);
 }
 
 .primary {
@@ -85,4 +86,5 @@ body {
 
 .btn {
   color: white !important;
+  cursor: pointer;
 }

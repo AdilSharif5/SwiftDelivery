@@ -20,9 +20,15 @@
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <span>Project Description: </span>
-            <input class="form-field full-width" appearance="outline" type="text" name="projectDescription"
-              [(ngModel)]="project.description" required>
+            <span>Project user: </span>
+            <mat-select class="form-field full" [(ngModel)]="project.user" required="true" appearance="outline">
+              <mat-option value="">
+                Select User
+              </mat-option>
+              <mat-option value="Upanshu">
+                Upanshu
+              </mat-option>
+            </mat-select>
           </div>
           <!-- <mat-form-field class="full-width" appearance="outline">
             <mat-label>Project Description</mat-label>
@@ -43,28 +49,32 @@
             </mat-select>
           </mat-form-field> -->
           <div class="form-group">
-            <span>Lead: </span>
-            <mat-select class="form-field full" [(ngModel)]="project.lead" required="true" appearance="outline">
+            <span>Lead name: </span>
+            <input class="form-field full-width" appearance="outline" type="text" name="projectLead"
+              [(ngModel)]="project.lead" required>
+            <!-- <mat-select class="form-field full" [(ngModel)]="project.lead" required="true" appearance="outline">
               <mat-option value="">
                 Select Lead
               </mat-option>
               <mat-option value="Upanshu">
                 Upanshu
               </mat-option>
-            </mat-select>
+            </mat-select> -->
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <span>PMO: </span>
-            <mat-select class="form-field full-width" [(ngModel)]="project.pmo" required="true">
+            <span>Lead Email: </span>
+            <input class="form-field full-width" appearance="outline" type="text" name="projectLeadEmail"
+              [(ngModel)]="project.leadEmail" required>
+            <!-- <mat-select class="form-field full-width" [(ngModel)]="project.pmo" required="true">
               <mat-option value="">
                 Select PMO
               </mat-option>
               <mat-option value="Sowjanya">
                 Sowjanya
               </mat-option>
-            </mat-select>
+            </mat-select> -->
           </div>
           <!-- <mat-form-field class="full-width" appearance="outline">
             <mat-label>PMO</mat-label>
@@ -76,6 +86,20 @@
                 Sowjanya
               </mat-option>
             </mat-select>
+          </mat-form-field> -->
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col">
+          <div class="form-group">
+            <span>Project Description: </span>
+            <input class="form-field full-width" appearance="outline" type="text" name="projectDescription"
+              [(ngModel)]="project.description" required>
+          </div>
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Project Description</mat-label>
+            <input matInput name="projectDescription" [(ngModel)]="project.description" autocomplete="off"
+              required="true">
           </mat-form-field> -->
         </div>
       </div>
